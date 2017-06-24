@@ -15,6 +15,18 @@ ActiveRecord::Schema.define(version: 20170620213757) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "authors", id: :serial, force: :cascade do |t|
+    t.string "name", limit: 255
+    t.string "nationality", limit: 255
+    t.integer "birth_year"
+  end
+
+  create_table "books", id: :serial, force: :cascade do |t|
+    t.string "title", limit: 255
+    t.integer "publication_date"
+    t.integer "author_id"
+  end
+
   create_table "cars", force: :cascade do |t|
     t.string "make"
     t.string "model"
